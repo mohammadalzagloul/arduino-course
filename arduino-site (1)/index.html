@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ورشة الأردوينو للأطفال</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#061A38;--blue:#0B4FB3;--card:#0C2A57;--yellow:#FFD21F;--teal:#00C2CB;--ink:#F3F8FF;--mute:#A9C3E6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:"Cairo",system-ui,sans-serif;background:var(--navy);
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%2300C2CB' stroke-opacity='.12' stroke-width='2'%3E%3Cpath d='M0 40h70l20 20h60M120 0v50l30 30h90M0 160h50l30-30h80l20 20v90M200 240v-60l-20-20h-60'/%3E%3Ccircle cx='70' cy='40' r='5'/%3E%3Ccircle cx='150' cy='60' r='5'/%3E%3C/svg%3E");
+ padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.poster{max-width:560px;margin:0 auto;padding:22px 16px 10px}
+h1,h2,.ttl{font-family:"Baloo Bhaijaan 2","Cairo",sans-serif;margin:0}
+/* hero */
+.tag{display:inline-block;background:#fff;color:var(--navy);font-weight:700;border-radius:12px;padding:6px 14px;font-size:15px}
+.tag b{background:var(--yellow);padding:0 6px;border-radius:6px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-top:14px}
+.bot{width:104px;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-6px)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.ant{animation:pulse 1.6s infinite}@keyframes pulse{50%{opacity:.3}}
+.big{display:inline-block;background:var(--yellow);color:var(--navy);transform:rotate(-2deg);padding:2px 20px 6px;border-radius:14px;font:800 clamp(40px,11vw,58px)/1.15 "Baloo Bhaijaan 2",sans-serif;box-shadow:6px 6px 0 #0B4FB3}
+.big.s{font-size:clamp(28px,8vw,40px);margin-top:8px;background:#fff}
+.sl{font:800 22px "Baloo Bhaijaan 2",sans-serif;margin:14px 0 2px;color:var(--yellow)}
+.from{color:var(--mute);margin:0 0 12px}
+.logo{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);padding:8px 16px;border-radius:14px;font:800 20px "Baloo Bhaijaan 2",sans-serif}
+/* cta */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;cursor:pointer;border-radius:18px;padding:14px 30px;font:800 24px "Baloo Bhaijaan 2","Cairo",sans-serif;color:#2A1A00;
+ background:linear-gradient(180deg,#FFE066,var(--yellow));box-shadow:0 6px 0 #B58F00,0 12px 28px #FFD21F40;transition:transform .15s,box-shadow .15s;animation:glow 2.4s ease-in-out infinite}
+.cta:hover{transform:translateY(-2px)}.cta:active{transform:translateY(4px);box-shadow:0 2px 0 #B58F00}
+.cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes glow{50%{box-shadow:0 6px 0 #B58F00,0 12px 40px #FFD21F90}}
+.hero-cta{margin:18px 0 6px;text-align:center}
+.hero-cta small{display:block;color:var(--mute);margin-top:10px}
+/* sections */
+.ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:10px;margin:22px 0}
+.b{background:var(--card);border-radius:16px;padding:12px 8px;text-align:center;font-size:13px;line-height:1.5;border:1px solid #17407F;transition:transform .2s,border-color .2s}
+.b:hover{transform:translateY(-3px);border-color:var(--teal)}
+.b i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;margin:0 auto 8px;font-style:normal;font-size:22px;background:var(--blue)}
+.grid{display:grid;gap:14px}
+@media(min-width:520px){.grid{grid-template-columns:1.3fr 1fr}.grid .wide{grid-column:1/-1}}
+.box{background:var(--card);border:1px solid #17407F;border-radius:20px;padding:18px}
+.box h2{font-size:21px;margin-bottom:10px;color:var(--yellow)}
+ul{list-style:none;margin:0;padding:0}
+li{padding:7px 0;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:#12B76A;color:#fff;font-size:13px;display:grid;place-items:center;margin-top:3px}
+.stat{text-align:center}
+.stat+.stat{margin-top:12px;padding-top:12px;border-top:1px dashed #2A5CA8}
+.stat span{color:var(--mute);font-size:14px}.stat b{display:block;font:800 28px "Baloo Bhaijaan 2",sans-serif;color:var(--yellow)}
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px}
+.p{background:#fff;color:var(--navy);border-radius:14px;padding:12px 6px;text-align:center;font-weight:700;font-size:14px;transition:transform .25s}
+.p:hover{transform:rotate(-2deg) translateY(-4px)}.p i{display:block;font-style:normal;font-size:38px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:22px 0;text-align:center;font-size:14px;color:var(--mute)}
+.feat span{display:block;font-size:24px}
+.end{text-align:center;background:linear-gradient(160deg,#0B4FB3,#082F6B);border-radius:24px;padding:26px 16px}
+.end p{margin:0 0 16px;font-size:18px}
+/* sticky bar */
+.bar{position:fixed;inset-inline:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#061A38EE;backdrop-filter:blur(8px);border-top:1px solid #17407F;text-align:center;transform:translateY(110%);transition:transform .35s}
+.bar.show{transform:none}.bar .cta{width:100%;max-width:520px;font-size:21px;padding:11px;animation:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="poster">
+  <span class="tag">البرمجة تصنع <b>مستقبلاً أفضل</b></span>
+
+  <section class="hero">
+    <div>
+      <h1><span class="big">ورشة الأردوينو</span><br><span class="big s">للأطفال</span></h1>
+      <p class="sl">تعلّم .. برمج .. اصنع</p>
+      <p class="from">من الفكرة إلى المشروع الحقيقي</p>
+      <span class="logo" dir="ltr"><svg width="58" height="30" viewBox="0 0 58 30" fill="none" stroke="#00979D" stroke-width="4"><circle cx="16" cy="15" r="11"/><circle cx="42" cy="15" r="11"/><path d="M10 15h12M36 15h12M42 9v12" stroke-width="3"/></svg>ARDUINO</span>
+    </div>
+    <svg class="bot" viewBox="0 0 92 90" aria-hidden="true">
+      <path d="M46 20V9" stroke="#00C2CB" stroke-width="2.5" stroke-linecap="round"/><circle class="ant" cx="46" cy="6" r="4.5" fill="#FFD21F"/>
+      <rect x="4" y="38" width="9" height="18" rx="3" fill="#00979D"/><rect x="79" y="38" width="9" height="18" rx="3" fill="#00979D"/>
+      <rect x="12" y="20" width="68" height="52" rx="15" fill="#0B4FB3" stroke="#00C2CB" stroke-width="2.5"/>
+      <rect class="eye" x="26" y="35" width="12" height="15" rx="4" fill="#5CF0A3"/><rect class="eye" x="54" y="35" width="12" height="15" rx="4" fill="#5CF0A3"/>
+      <rect x="34" y="58" width="6" height="6" rx="1.5" fill="#FFD21F"/><rect x="43" y="58" width="6" height="6" rx="1.5" fill="#FFD21F"/><rect x="52" y="58" width="6" height="6" rx="1.5" fill="#FFD21F"/>
+      <rect x="38" y="72" width="16" height="9" fill="#00979D"/><path d="M30 86h32" stroke="#00C2CB" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </section>
+
+  <div class="hero-cta" id="heroCta"><a class="cta" data-reg href="register.html">سجّل الآن 🚀</a><small>وامنح طفلك فرصة لبناء مستقبله الرقمي</small></div>
+
+  <section class="ben" aria-label="فوائد الورشة">
+    <div class="b"><i>👥</i>بناء الثقة بالنفس والعمل الجماعي</div>
+    <div class="b"><i>⚙️</i>تعلّم بطريقة عملية وتفاعلية</div>
+    <div class="b"><i>💡</i>تعزيز الإبداع والابتكار</div>
+    <div class="b"><i>&lt;/&gt;</i>التعامل مع البرمجة والدوائر الإلكترونية</div>
+    <div class="b"><i>🧠</i>تنمية مهارات التفكير المنطقي وحل المشكلات</div>
+  </section>
+
+  <section class="grid">
+    <div class="box wide"><h2>ماذا سيتعلم طفلك؟</h2><ul>
+      <li>أساسيات الأردوينو وتوصيل القطع</li><li>البرمجة باستخدام لغة C++</li>
+      <li>الحساسات المختلفة (ضوء - حركة - مسافة ..)</li><li>التحكم بالمحركات والروبوتات الصغيرة</li><li>تنفيذ مشاريع عملية وتحديات ممتعة</li></ul></div>
+    <div class="box"><h2>محتويات الورشة</h2><ul>
+      <li>لوحة أردوينو</li><li>مجموعة القطع الإلكترونية</li><li>مجموعة الحساسات</li><li>محركات ومكونات الروبوت</li><li>كتيب تدريبات ومشاريع</li></ul></div>
+    <div class="box"><div class="stat"><span>الفئة العمرية</span><b>7 - 16 سنة</b></div><div class="stat"><span>مدة الورشة</span><b>3 ساعات</b><span>(كل جلسة)</span></div></div>
+  </section>
+
+  <section class="box" style="margin-top:14px"><h2>مشاريع سيصنعها طفلك</h2>
+    <div class="proj"><div class="p"><i>🚗</i>روبوت متتبع خط</div><div class="p"><i>🚦</i>إشارة مرور ذكية</div><div class="p"><i>🦾</i>ذراع روبوت</div><div class="p"><i>🤖</i>روبوت ذكي</div></div></section>
+
+  <section class="feat"><div><span>⭐</span>مشاريع حقيقية</div><div><span>🏅</span>شهادات مشاركة</div><div><span>🧑‍🏫</span>مدربون ذوو خبرة</div><div><span>🛡️</span>بيئة آمنة وممتعة</div></section>
+
+  <section class="end"><h2 class="ttl" style="font-size:28px;margin-bottom:6px">سجّل الآن</h2><p>وامنح طفلك فرصة لبناء مستقبله الرقمي</p><a class="cta" data-reg href="register.html">سجّل الآن 🚀</a></section>
+</main>
+
+<div class="bar" id="bar"><a class="cta" data-reg href="register.html">سجّل الآن 🚀</a></div>
+
+<script>
+// Registration page address. Change to a full link if the form is hosted elsewhere.
+const REG_URL="register.html";
+document.querySelectorAll("[data-reg]").forEach(a=>a.href=REG_URL);
+const bar=document.getElementById("bar");
+new IntersectionObserver(([e])=>bar.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)).observe(document.getElementById("heroCta"));
+</script>
+</body>
+</html>
