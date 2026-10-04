@@ -260,6 +260,8 @@ keys.forEach(k=>{
     el.addEventListener("blur",()=>{if(k!=="level"){touched[k]=1;show(k)}});
   });
 });
+// Paste the Google Apps Script web-app URL here to save registrations to Google Sheets.
+const SHEET_URL="https://script.google.com/macros/s/AKfycbyifX3RoAppnvXYgsnn9YNUwJW83qdoxDyx0QigiOiQgZ4IRQh5MVmdRE2veM8erQJG/exec";
 const MAIL="mohamadzagloul021@gmail.com";
 const LV={ar:{beginner:"مبتدئ",intermediate:"متوسط",experienced:"لديه خبرة"}};
 $("f").addEventListener("submit",async ev=>{
@@ -272,11 +274,16 @@ $("f").addEventListener("submit",async ev=>{
   const btn=document.querySelector(".go"),es=$("e-send");
   es.classList.remove("show");btn.disabled=true;btn.style.opacity=".7";btn.textContent=T[L].sending;
   try{
+    if(SHEET_URL){
+      await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({name:data.name,age:data.age,guardian:data.guardian,phone:data.phone,level:LV.ar[data.level],notes:data.notes,lang:L})});
+    }else{
     const r=await fetch("https://formsubmit.co/ajax/"+MAIL,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
       body:JSON.stringify({"الاسم الكامل":data.name,"العمر":data.age,"اسم ولي الأمر":data.guardian,"هاتف ولي الأمر":data.phone,
         "مستوى الخبرة":LV.ar[data.level],"ملاحظات":data.notes||"-","_subject":"تسجيل جديد - دورة الأردوينو","_template":"table","_captcha":"false","_honey":""})});
     const j=await r.json();
     if(!r.ok||j.success==="false"||j.success===false)throw new Error("send");
+    }
   }catch(err){
     btn.disabled=false;btn.style.opacity="";apply();
     es.textContent=T[L].sendErr;es.classList.add("show");return;

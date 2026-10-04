@@ -85,7 +85,6 @@ li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;back
     </svg>
   </section>
 
-  <div class="hero-cta" id="heroCta"><small>وامنح طفلك فرصة لبناء مستقبله الرقمي</small></div>
 
   <section class="ben" aria-label="فوائد الورشة">
     <div class="b"><i>👥</i>بناء الثقة بالنفس والعمل الجماعي</div>
@@ -119,7 +118,7 @@ li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;back
 const REG_URL="register.html";
 document.querySelectorAll("[data-reg]").forEach(a=>a.href=REG_URL);
 const bar=document.getElementById("bar");
-new IntersectionObserver(([e])=>bar.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)).observe(document.getElementById("heroCta"));
+new IntersectionObserver(([e])=>bar.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)).observe(document.querySelector(".hero"));
 </script>
 </body>
 </html>
